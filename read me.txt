@@ -1,0 +1,22 @@
+
+[In this program]
+The program use the pandas library to read the MeSH terms in the excel, using combination of MeSH terms as the search query in PubMed(Through the biopython under the Entrez). Each query includes three MeSH terms.
+
+
+Since PubMed's search results are sorted in descending order by relevance, the program will extract the first eight papers in the search results and if the search results are less than 8, the abstract of all search results will be fetched. If the search results is empty, then the program will switch to next combination. The program will eventually perform all combinations in each of the categories.
+
+After pick up abstracts, the data will be saved as csv file that named by its category.
+As the training set is for supervised learning, each abstract will be labeled.
+
+
+functions:
+
+Read.read_cat () Read the excel file and extract the terms data
+
+Read.bat_data () builds a category-based term combination with three terms for each combination
+
+Entrez.search () and Entrez.fetch_details () pass in the query set, crawl the abstract of first eight papers from the PubMed database
+
+
+[Next program - Data cleaning]
+After extracting the full data, I will use the nltk library to filter out the common words and retain the representative part. 
